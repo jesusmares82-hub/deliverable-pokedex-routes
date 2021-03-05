@@ -6,6 +6,7 @@ import { TiArrowBackOutline } from "react-icons/ti";
 import { FaMapMarkedAlt } from "react-icons/fa";
 import { SiOpenstreetmap } from "react-icons/si";
 import { GiPawPrint } from "react-icons/gi";
+import { BiGlassesAlt } from "react-icons/bi";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -50,7 +51,7 @@ const EncountersPokemon = () => {
     <div>
       <h2>
         {" "}
-        {`Where to find it? `} <GiPawPrint />
+        {`Where to find it? `} <GiPawPrint /> <BiGlassesAlt />
       </h2>
       {hasData ? (
         <Container>
