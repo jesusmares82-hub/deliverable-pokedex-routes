@@ -1,24 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
+import AuthButtons from "./Components/AuthButtons";
+import LoginPage from "./Components/LoginPage";
+import PublicPage from "./Components/PublicPage";
+import ProtectedRoute from "./Components/ProtectedRoute";
+import PokemonDetails from "./Components/PokemonDetails";
+import EncountersPokemon from "./Components/EncountersPokemon";
+import Home from "./Components/Home";
+import { ProvideAuth } from "./Provider/AuthProvider";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ProvideAuth>
+      <Router>
+        <div>
+          <AuthButtons />
+
+          <Switch>
+            <ProtectedRoute exact path="/pokedex">
+              <PublicPage />
+            </ProtectedRoute>
+            <Route path="/login">
+              <LoginPage />
+            </Route>
+            <ProtectedRoute exact path="/pokedex/pokemon/:id">
+              <PokemonDetails />
+            </ProtectedRoute>
+            <ProtectedRoute exact path={"/pokedex/pokemon/:id/encounters"}>
+              <EncountersPokemon />
+            </ProtectedRoute>
+
+            <Route exact path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    </ProvideAuth>
   );
 }
 
