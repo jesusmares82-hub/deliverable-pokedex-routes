@@ -21,26 +21,27 @@ const PublicPage = ({ children, ...props }) => {
 
   const { user } = useAuth();
 
-  const getData = async () => {
+  useEffect(() => {
     if (query) {
-      const res = await axios.get(`https://pokeapi.co/api/v2/type/${query}/`);
-      const data = res.data.pokemon;
-      const slices = data.slice(offset, offset + perPage);
-      const postData = slices.map((value) => (
-        <Pokedex
-          key={value.pokemon.name}
-          name={value.pokemon.name}
-          type={query}
-          url={value.pokemon.url}
-        />
-      ));
-      setPokes(postData);
-      setPageCount(Math.ceil(data.length / perPage));
-      setHasData(true);
+      axios.get(`https://pokeapi.co/api/v2/type/${query}/`).then((res) => {
+        const data = res.data.pokemon;
+        const slices = data.slice(offset, offset + perPage);
+        const postData = slices.map((value) => (
+          <Pokedex
+            key={value.pokemon.name}
+            name={value.pokemon.name}
+            type={query}
+            url={value.pokemon.url}
+          />
+        ));
+        setPokes(postData);
+        setPageCount(Math.ceil(data.length / perPage));
+        setHasData(true);
+      });
     }
-  };
+  }, [query, offset]);
 
-  const getDataPokemon = () => {
+  useEffect(() => {
     if (queryName) {
       axios
         .get(`https://pokeapi.co/api/v2/pokemon/${queryName}/`)
@@ -57,14 +58,6 @@ const PublicPage = ({ children, ...props }) => {
           }*/
         });
     }
-  };
-
-  useEffect(() => {
-    getData();
-  }, [query, offset]);
-
-  useEffect(() => {
-    getDataPokemon();
   }, [queryName]);
 
   const handleSearchName = (value, setSearchTerm) => {
