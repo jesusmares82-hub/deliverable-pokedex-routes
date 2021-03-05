@@ -7,6 +7,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { TiArrowBackOutline } from "react-icons/ti";
 import { TiArrowForwardOutline } from "react-icons/ti";
+import { GiPunchBlast } from "react-icons/gi";
 import Spinner from "./Spiner";
 
 const PokemonDetails = () => {
@@ -103,7 +104,10 @@ const PokemonDetails = () => {
                   </h6>
                 </Col>
                 <Col>
-                  <h3> Moves: </h3>
+                  <h3>
+                    {" "}
+                    Moves <GiPunchBlast />:{" "}
+                  </h3>
 
                   <h6>
                     <strong>

@@ -61,7 +61,7 @@ const EncountersPokemon = () => {
               {dataRender && dataRender.length > 0 ? (
                 <h5>{dataRender && dataRender}</h5>
               ) : (
-                <h5 className="mt-3 mb-5">
+                <h5 className="card-encounters text-center">
                   {" "}
                   <SiOpenstreetmap /> Location not found
                 </h5>
