@@ -39,7 +39,7 @@ const PublicPage = ({ children, ...props }) => {
         setHasData(true);
       });
     }
-  }, [query, offset]);
+  }, [query, offset, perPage]);
 
   useEffect(() => {
     if (queryName) {
