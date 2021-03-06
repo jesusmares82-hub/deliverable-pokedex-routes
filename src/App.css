@@ -9,11 +9,13 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  /*display: flex;*/
-  /*flex-direction: column;*/
+
+  display: flex;
+  flex-wrap: wrap;
+  background-color: black;
   align-items: center;
+  flex-direction: column;
   justify-content: center;
-  margin: 0;
 }
 
 .bg-encounters {
