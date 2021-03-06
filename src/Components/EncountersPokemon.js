@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import { TiArrowBackOutline } from "react-icons/ti";
 import { FaMapMarkedAlt } from "react-icons/fa";
 import { SiOpenstreetmap } from "react-icons/si";
-import { GiConsoleController, GiPawPrint } from "react-icons/gi";
+import { GiPawPrint } from "react-icons/gi";
 import { BiGlassesAlt } from "react-icons/bi";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -21,10 +21,10 @@ const EncountersPokemon = () => {
   let history = useHistory();
   let encounters = id;
   const [data, setData] = useState();
-  const [dataRender, setDataRender] = useState([]);
+  //const [dataRender, setDataRender] = useState([]);
 
   const [offset, setOffset] = useState(0);
-  const [perPage, setPerPage] = useState(4);
+  const perPage = 4;
   const [pageCount, setPageCount] = useState(0);
 
   const [hasData, setHasData] = useState(false);
