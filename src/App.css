@@ -48,7 +48,11 @@ select {
 }
 
 .logo-center {
-  margin-left: 75px;
+  margin-left: 10px;
+}
+
+.logo-center-pokedex {
+  margin-left: 600px;
 }
 
 .padding-custom-encounters {
@@ -66,6 +70,7 @@ select {
 }
 
 .poke-details {
+  display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
@@ -103,7 +108,7 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 15rem;
+  width: 14rem;
   height: 20rem;
   margin: 15px;
   background-color: transparent;
