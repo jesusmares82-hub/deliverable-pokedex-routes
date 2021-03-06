@@ -29,37 +29,11 @@ const EncountersPokemon = () => {
 
   const [hasData, setHasData] = useState(false);
 
-  /*useEffect(() => {
-    axios
-      .get(`https://pokeapi.co/api/v2/pokemon/${encounters}/encounters`)
-      .then((dataApi) => {
-        setData(dataApi);
-        setHasData(true);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [encounters]);
-
-  useEffect(() => {
-    if (data) {
-      const renderLocation = data.data.map((values, index) => (
-        <div key={values + index}>
-          <span className="card-encounters text-center">
-            <FaMapMarkedAlt /> Location area: {values.location_area.name}
-          </span>
-        </div>
-      ));
-      setDataRender(renderLocation);
-    }
-  }, [data, offset, perPage]);*/
-
   useEffect(() => {
     if (encounters) {
       axios
         .get(`https://pokeapi.co/api/v2/pokemon/${encounters}/encounters`)
         .then((res) => {
-          //console.log(res.data);
           const data = res.data;
           const slices = data.slice(offset, offset + perPage);
           const postData = slices.map((values, index) => (
