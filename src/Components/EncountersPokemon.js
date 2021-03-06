@@ -50,10 +50,16 @@ const EncountersPokemon = () => {
   return (
     <>
       <h2 className="text-center">
-        {" "}
+        <Button
+          className="mt-5 mb-3 mr-5"
+          variant="warning"
+          onClick={() => history.goBack()}
+        >
+          <TiArrowBackOutline /> Back
+        </Button>{" "}
         {`Where to find it? `} <GiPawPrint /> <BiGlassesAlt />
       </h2>
-      <div className="d-flex justify-content-center align-items-center">
+      <div>
         {hasData ? (
           <Container>
             <Row className="d-inline-block">
@@ -73,13 +79,6 @@ const EncountersPokemon = () => {
         ) : (
           <Spinner />
         )}
-        <Button
-          className="mt-5 mb-3 mr-5"
-          variant="warning"
-          onClick={() => history.goBack()}
-        >
-          <TiArrowBackOutline /> Back
-        </Button>{" "}
       </div>
     </>
   );

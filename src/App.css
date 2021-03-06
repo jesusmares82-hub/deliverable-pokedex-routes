@@ -12,18 +12,10 @@ body {
 
   display: flex;
   flex-wrap: wrap;
-  background-color: #8bad72;
+  background-color: #85a36f;
   align-items: center;
-  flex-direction: column;
+  /*flex-direction: column;*/
   justify-content: center;
-}
-
-.bg-encounters {
-  background-image: url("./img/background.png");
-  background-size: cover;
-  background-position: center;
-  min-width: 100vw;
-  min-height: 100vh;
 }
 
 .font-family {

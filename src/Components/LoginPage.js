@@ -29,7 +29,7 @@ const LoginPage = () => {
         />
         <InputGroup.Append>
           <Button
-            variant="outline-primary"
+            variant="primary"
             onClick={() =>
               signIn(() => {
                 history.push(`/pokedex`);

@@ -66,12 +66,12 @@ const SearchBox = ({
         />
         <InputGroup.Append>
           <Button
-            variant="outline-primary"
+            variant="primary"
             onClick={() => handleSearchTermName(searchTerm, setSearchTerm)}
           >
             Search
           </Button>
-          <Button variant="outline-danger" onClick={() => handleClearTerm()}>
+          <Button variant="danger" onClick={() => handleClearTerm()}>
             Clear
           </Button>
         </InputGroup.Append>
