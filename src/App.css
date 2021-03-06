@@ -1,10 +1,6 @@
-/*@import url("https://fonts.googleapis.com/css?family=Lato:300,400&display=swap");*/
 @import url("https://fonts.googleapis.com/css2?family=DotGothic16&family=Press+Start+2P&display=swap");
 
 body {
-  /*background: #efefbb;
-  background: -webkit-linear-gradient(to right, #64ae7d, #d7f0c5);
-  background: linear-gradient(to right, #d4d3dd, #efefbb);*/
   background-image: url("./img/background.png");
   background-position: center;
   background-size: cover;
@@ -12,18 +8,35 @@ body {
 
   display: flex;
   flex-wrap: wrap;
-  background-color: #92ae7e;
+  background-color: #829f72;
   align-items: center;
-  /*flex-direction: column;*/
   justify-content: center;
-}
-
-.font-family {
-  font-family: "DotGothic16", sans-serif;
 }
 
 h1 {
   letter-spacing: 3px;
+}
+
+input {
+  height: 69px;
+  width: 50%;
+  top: 50%;
+  font-size: 1em;
+  border: 3px solid #9858ad;
+  border-radius: 15px;
+}
+
+select {
+  height: 70px;
+  background: #9858ad;
+  color: #fff;
+  font-weight: 700;
+  font-size: 30px;
+  border-radius: 5px 5px 5px 5px;
+}
+
+.font-family {
+  font-family: "DotGothic16", sans-serif;
 }
 
 .p-card {
@@ -93,7 +106,6 @@ h1 {
   width: 15rem;
   height: 20rem;
   margin: 15px;
-  /*padding: 15px 15px;*/
   background-color: transparent;
   border-radius: 15px;
   box-shadow: 6px 10px 5px 0px rgba(199, 197, 199, 0.75);
@@ -132,24 +144,6 @@ h1 {
   padding-bottom: 10px;
   margin-left: 15%;
   margin-right: 15%;
-}
-
-input {
-  height: 69px;
-  width: 50%;
-  top: 50%;
-  font-size: 1em;
-  border: 3px solid #9858ad;
-  border-radius: 15px;
-}
-
-select {
-  height: 70px;
-  background: #9858ad;
-  color: #fff;
-  font-weight: 700;
-  font-size: 30px;
-  border-radius: 5px 5px 5px 5px;
 }
 
 .custom-select {
