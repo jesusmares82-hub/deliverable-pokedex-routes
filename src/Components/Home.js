@@ -12,8 +12,8 @@ const Home = () => {
         alt="pokemon-logo"
       />
       <h2 className="text-center">Welcome to Pokedex by Squad 12.</h2>
-      <p className="text-center">March 2020.</p>
-      <Link className="btn-center btn btn-primary" to={`/login`} replace>
+      <p className="text-center">Academlo, March 2020.</p>
+      <Link className="btn-login-center btn btn-primary" to={`/login`} replace>
         {" "}
         Login{" "}
       </Link>

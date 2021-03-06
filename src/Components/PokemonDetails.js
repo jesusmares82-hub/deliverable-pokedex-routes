@@ -53,7 +53,7 @@ const PokemonDetails = () => {
   }, [id]);
 
   return (
-    <div className="text-center poke-details">
+    <div className="text-center poke-details font-secondary">
       <ReactAudioPlayer src={PokemonRap} autoPlay loop />
       {hasData ? (
         pokemon && (

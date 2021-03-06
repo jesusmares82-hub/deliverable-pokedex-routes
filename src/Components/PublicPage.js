@@ -90,7 +90,9 @@ const PublicPage = ({ children, ...props }) => {
 
   return (
     <>
-      <h4 className="text-center mb-4">Welcome Trainer: {user}</h4>
+      <h4 className="text-center mb-4 font-secondary">
+        Welcome Trainer: {user}
+      </h4>
 
       <div className="text-center  font-family">
         <ReactAudioPlayer src={PokemonSong} autoPlay loop />

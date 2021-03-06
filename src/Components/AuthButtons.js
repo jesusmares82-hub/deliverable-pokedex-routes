@@ -11,7 +11,7 @@ const AuthButton = () => {
     <div>
       {user ? (
         <Button
-          className="mt-4 ml-5 buttons-details"
+          className="mt-4 mb-5"
           variant="outline-danger"
           onClick={() =>
             signOut(() => {

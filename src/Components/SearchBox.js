@@ -51,7 +51,8 @@ const SearchBox = ({
       <Form.Label>Search pokemon by name or id:</Form.Label>
       <InputGroup className="pr-5 pl-5">
         <FormControl
-          className="custom-select "
+          id="poke-search"
+          className="custom-select"
           placeholder="Pokemon name/id..."
           value={searchTerm}
           style={{

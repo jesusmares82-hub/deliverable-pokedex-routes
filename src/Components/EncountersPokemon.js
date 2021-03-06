@@ -52,17 +52,22 @@ const EncountersPokemon = () => {
   return (
     <>
       <ReactAudioPlayer src={PokemonJhoto} autoPlay loop />
-      <h2 className="text-center">
-        <Button
-          className="mt-5 mb-3 mr-5"
-          variant="warning"
-          onClick={() => history.goBack()}
-        >
-          <TiArrowBackOutline /> Back
-        </Button>{" "}
-        {`Where to find it? `} <GiPawPrint /> <BiGlassesAlt />
-      </h2>
-      <div>
+      <Container>
+        <Row>
+          <Col className="col-md-2">
+            <Button variant="warning" onClick={() => history.goBack()}>
+              <TiArrowBackOutline /> Back
+            </Button>{" "}
+          </Col>
+          <Col>
+            <h2 className="text-center font-secondary">
+              {`Where to find it? `} <GiPawPrint /> <BiGlassesAlt />
+            </h2>
+          </Col>
+        </Row>
+      </Container>
+
+      <div className="font-secondary">
         {hasData ? (
           <Container>
             <Row className="d-inline-block">
