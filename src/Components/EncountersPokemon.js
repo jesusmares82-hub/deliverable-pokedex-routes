@@ -21,7 +21,6 @@ const EncountersPokemon = () => {
   let history = useHistory();
   let encounters = id;
   const [data, setData] = useState();
-  //const [dataRender, setDataRender] = useState([]);
 
   const [offset, setOffset] = useState(0);
   const perPage = 4;
