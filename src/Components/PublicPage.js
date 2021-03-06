@@ -55,9 +55,6 @@ const PublicPage = ({ children, ...props }) => {
         .catch((err) => {
           console.log(err.response);
           setMessageError(err.response.data);
-          /*if (err.response.status === 404) {
-            throw err;
-          }*/
         });
     }
   }, [queryName]);
@@ -141,7 +138,7 @@ const PublicPage = ({ children, ...props }) => {
                   breakClassName={"break-me"}
                   pageCount={pageCount}
                   marginPagesDisplayed={0}
-                  pageRangeDisplayed={9}
+                  pageRangeDisplayed={1}
                   onPageChange={handlePageClick}
                   containerClassName={"pagination"}
                   subContainerClassName={"pages pagination"}
