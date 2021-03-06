@@ -48,38 +48,40 @@ const EncountersPokemon = () => {
   }, [data]);
 
   return (
-    <div>
-      <h2>
+    <>
+      <h2 className="text-center">
         {" "}
         {`Where to find it? `} <GiPawPrint /> <BiGlassesAlt />
       </h2>
-      {hasData ? (
-        <Container>
-          <Row>
-            <Col className="col-lg-3 mt-3">
-              {" "}
-              {dataRender && dataRender.length > 0 ? (
-                <h5>{dataRender && dataRender}</h5>
-              ) : (
-                <h5 className="card-encounters text-center">
-                  {" "}
-                  <SiOpenstreetmap /> Location not found
-                </h5>
-              )}
-            </Col>
-          </Row>
-        </Container>
-      ) : (
-        <Spinner />
-      )}
-      <Button
-        className="mt-5 mb-3"
-        variant="outline-info"
-        onClick={() => history.goBack()}
-      >
-        <TiArrowBackOutline /> Back
-      </Button>{" "}
-    </div>
+      <div className="d-flex justify-content-center align-items-center">
+        {hasData ? (
+          <Container>
+            <Row className="d-inline-block">
+              <Col className="col-md-12 mt-5 padding-custom-encounters">
+                {" "}
+                {dataRender && dataRender.length > 0 ? (
+                  <span>{dataRender && dataRender}</span>
+                ) : (
+                  <span className="card-encounters text-center">
+                    {" "}
+                    <SiOpenstreetmap /> Location not found
+                  </span>
+                )}
+              </Col>
+            </Row>
+          </Container>
+        ) : (
+          <Spinner />
+        )}
+        <Button
+          className="mt-5 mb-3 mr-5"
+          variant="warning"
+          onClick={() => history.goBack()}
+        >
+          <TiArrowBackOutline /> Back
+        </Button>{" "}
+      </div>
+    </>
   );
 };
 

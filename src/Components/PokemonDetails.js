@@ -31,6 +31,7 @@ const PokemonDetails = () => {
           })
           .then((res) => {
             setPokemon(res.data);
+            console.log(res.data);
             setPokemonAbilities(res.data.abilities);
             setPokemonMoves(res.data.moves);
             setHasData(true);
@@ -140,7 +141,7 @@ const PokemonDetails = () => {
           <Col>
             <Button
               className="mb-3"
-              variant="outline-info"
+              variant="danger"
               onClick={() => history.goBack()}
             >
               <TiArrowBackOutline /> Back
