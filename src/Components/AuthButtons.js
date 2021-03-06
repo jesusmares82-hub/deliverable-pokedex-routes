@@ -8,7 +8,7 @@ const AuthButton = () => {
   const history = useHistory();
   const { user, signOut } = useAuth();
   return (
-    <div>
+    <div className="d-flex justify-content-end mr-5">
       {user ? (
         <Button
           className="mt-4 mb-5"

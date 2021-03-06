@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import { TiArrowBackOutline } from "react-icons/ti";
 import { FaMapMarkedAlt } from "react-icons/fa";
 import { SiOpenstreetmap } from "react-icons/si";
-import { GiPawPrint } from "react-icons/gi";
+import { GiConsoleController, GiPawPrint } from "react-icons/gi";
 import { BiGlassesAlt } from "react-icons/bi";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -13,6 +13,7 @@ import Col from "react-bootstrap/Col";
 import Spinner from "./Spiner";
 import PokemonJhoto from "../img/PokemonJohto.mp3";
 import ReactAudioPlayer from "react-audio-player";
+import ReactPaginate from "react-paginate";
 
 const EncountersPokemon = () => {
   let { id } = useParams();
@@ -22,9 +23,13 @@ const EncountersPokemon = () => {
   const [data, setData] = useState();
   const [dataRender, setDataRender] = useState([]);
 
+  const [offset, setOffset] = useState(0);
+  const [perPage, setPerPage] = useState(4);
+  const [pageCount, setPageCount] = useState(0);
+
   const [hasData, setHasData] = useState(false);
 
-  useEffect(() => {
+  /*useEffect(() => {
     axios
       .get(`https://pokeapi.co/api/v2/pokemon/${encounters}/encounters`)
       .then((dataApi) => {
@@ -47,11 +52,39 @@ const EncountersPokemon = () => {
       ));
       setDataRender(renderLocation);
     }
-  }, [data]);
+  }, [data, offset, perPage]);*/
+
+  useEffect(() => {
+    if (encounters) {
+      axios
+        .get(`https://pokeapi.co/api/v2/pokemon/${encounters}/encounters`)
+        .then((res) => {
+          //console.log(res.data);
+          const data = res.data;
+          const slices = data.slice(offset, offset + perPage);
+          const postData = slices.map((values, index) => (
+            <div key={values + index}>
+              <span className="card-encounters text-center">
+                <FaMapMarkedAlt /> Location area: {values.location_area.name}
+              </span>
+            </div>
+          ));
+          setData(postData);
+          setPageCount(Math.ceil(data.length / perPage));
+          setHasData(true);
+        });
+    }
+  }, [encounters, offset, perPage]);
+
+  const handlePageClick = (e) => {
+    const selectedPage = e.selected;
+
+    setOffset(selectedPage * perPage);
+  };
 
   return (
     <>
-      <ReactAudioPlayer src={PokemonJhoto} autoPlay loop />
+      <ReactAudioPlayer src={PokemonJhoto} autoPlay />
       <Container>
         <Row>
           <Col className="col-md-2">
@@ -59,7 +92,7 @@ const EncountersPokemon = () => {
               <TiArrowBackOutline /> Back
             </Button>{" "}
           </Col>
-          <Col>
+          <Col className="col-md-10">
             <h2 className="text-center font-secondary">
               {`Where to find it? `} <GiPawPrint /> <BiGlassesAlt />
             </h2>
@@ -72,9 +105,22 @@ const EncountersPokemon = () => {
           <Container>
             <Row className="d-inline-block">
               <Col className="col-md-12 mt-5 padding-custom-encounters">
-                {" "}
-                {dataRender && dataRender.length > 0 ? (
-                  <span>{dataRender && dataRender}</span>
+                <ReactPaginate
+                  className="color-text-a text-center"
+                  previousLabel={"<"}
+                  nextLabel={">"}
+                  breakLabel={""}
+                  breakClassName={"break-me"}
+                  pageCount={pageCount}
+                  marginPagesDisplayed={0}
+                  pageRangeDisplayed={9}
+                  onPageChange={handlePageClick}
+                  containerClassName={"pagination"}
+                  subContainerClassName={"pages pagination"}
+                  activeClassName={"active"}
+                />{" "}
+                {data && data.length > 0 ? (
+                  <span>{data && data}</span>
                 ) : (
                   <span className="card-encounters text-center">
                     {" "}

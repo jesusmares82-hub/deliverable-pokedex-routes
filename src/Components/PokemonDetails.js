@@ -54,7 +54,7 @@ const PokemonDetails = () => {
 
   return (
     <div className="text-center poke-details font-secondary">
-      <ReactAudioPlayer src={PokemonRap} autoPlay loop />
+      <ReactAudioPlayer src={PokemonRap} autoPlay />
       {hasData ? (
         pokemon && (
           <>

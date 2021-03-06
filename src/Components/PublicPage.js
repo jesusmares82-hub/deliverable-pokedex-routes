@@ -95,7 +95,7 @@ const PublicPage = ({ children, ...props }) => {
       </h4>
 
       <div className="text-center  font-family">
-        <ReactAudioPlayer src={PokemonSong} autoPlay loop />
+        <ReactAudioPlayer src={PokemonSong} autoPlay />
         <img
           className="mb-4 logo-center"
           src={pokemonlogo}
