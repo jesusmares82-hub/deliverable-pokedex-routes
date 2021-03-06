@@ -7,6 +7,8 @@ import axios from "axios";
 import Pokedex from "./Pokedex";
 import Spinner from "./Spiner";
 import SearchBox from "./SearchBox";
+import PokemonSong from "../img/Pokemon.mp3";
+import ReactAudioPlayer from "react-audio-player";
 
 const PublicPage = ({ children, ...props }) => {
   const [pokes, setPokes] = useState([]);
@@ -88,6 +90,7 @@ const PublicPage = ({ children, ...props }) => {
 
   return (
     <div className="text-center poke-details font-family">
+      <ReactAudioPlayer src={PokemonSong} autoPlay loop />
       <h4 className="text-center mb-4">Welcome Trainer: {user}</h4>
       <img className="mb-4" src={pokemonlogo} alt="pokemon-logo" />
       <div>

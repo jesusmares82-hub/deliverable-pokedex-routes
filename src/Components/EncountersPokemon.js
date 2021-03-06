@@ -11,6 +11,8 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Spinner from "./Spiner";
+import PokemonJhoto from "../img/PokemonJohto.mp3";
+import ReactAudioPlayer from "react-audio-player";
 
 const EncountersPokemon = () => {
   let { id } = useParams();
@@ -49,6 +51,7 @@ const EncountersPokemon = () => {
 
   return (
     <>
+      <ReactAudioPlayer src={PokemonJhoto} autoPlay loop />
       <h2 className="text-center">
         <Button
           className="mt-5 mb-3 mr-5"

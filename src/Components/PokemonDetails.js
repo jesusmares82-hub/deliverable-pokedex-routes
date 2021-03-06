@@ -9,6 +9,8 @@ import { TiArrowBackOutline } from "react-icons/ti";
 import { TiArrowForwardOutline } from "react-icons/ti";
 import { GiPunchBlast } from "react-icons/gi";
 import Spinner from "./Spiner";
+import PokemonRap from "../img/Pokerap.mp3";
+import ReactAudioPlayer from "react-audio-player";
 
 const PokemonDetails = () => {
   const { id } = useParams();
@@ -31,7 +33,6 @@ const PokemonDetails = () => {
           })
           .then((res) => {
             setPokemon(res.data);
-            console.log(res.data);
             setPokemonAbilities(res.data.abilities);
             setPokemonMoves(res.data.moves);
             setHasData(true);
@@ -53,6 +54,7 @@ const PokemonDetails = () => {
 
   return (
     <div className="text-center poke-details">
+      <ReactAudioPlayer src={PokemonRap} autoPlay loop />
       {hasData ? (
         pokemon && (
           <>
