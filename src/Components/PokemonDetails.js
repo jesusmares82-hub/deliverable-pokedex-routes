@@ -11,6 +11,7 @@ import { GiPunchBlast } from "react-icons/gi";
 import Spinner from "./Spiner";
 import PokemonRap from "../img/Pokerap.mp3";
 import ReactAudioPlayer from "react-audio-player";
+import nombreJapan from "../Data/pokedex.json";
 
 const PokemonDetails = () => {
   const { id } = useParams();
@@ -54,34 +55,74 @@ const PokemonDetails = () => {
 
   return (
     <div className="text-center poke-details font-secondary">
+      <Container>
+        <Row>
+          <Col>
+            <Button
+              className="mb-3"
+              variant="danger"
+              onClick={() => history.goBack()}
+            >
+              <TiArrowBackOutline /> Back
+            </Button>{" "}
+          </Col>
+          <Col>
+            {" "}
+            <Link
+              to={{
+                pathname: `/pokedex/pokemon/${id}/encounters`,
+                id: id,
+              }}
+            >
+              <h5>
+                {" "}
+                Encounters <TiArrowForwardOutline />
+              </h5>
+            </Link>
+          </Col>
+        </Row>
+      </Container>
       <ReactAudioPlayer src={PokemonRap} autoPlay />
       {hasData ? (
         pokemon && (
           <>
             <Container>
               <Row>
-                <Col className="col-md-2 mt-5">
+                <div>
+                  {nombreJapan &&
+                    nombreJapan.map((value, index) => {
+                      return (
+                        <span
+                          className="test-name-japan"
+                          key={value.name.japanese + index}
+                        >
+                          {value.name.english.charAt(0).toLowerCase() +
+                            value.name.english.slice(1) ===
+                          pokemon.name
+                            ? value.name.japanese
+                            : ""}
+                        </span>
+                      );
+                    })}
+                </div>
+                <Col className="col-md-3 mt-5">
                   <img
-                    width="150px"
+                    width="240px"
                     src={`https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png`}
                     alt={pokemon.name}
                   />
-
                   <h2>
                     {pokemon.name.charAt(0).toUpperCase() +
                       pokemon.name.slice(1)}
                   </h2>
-
                   <h4>
                     {" "}
                     Id: <span>{id}</span>{" "}
                   </h4>
-
                   <h4>
                     {" "}
                     Height: <span>{pokemon.height / 10} M</span>{" "}
                   </h4>
-
                   <h4>
                     {" "}
                     Order: <span>{pokemon.order}</span>{" "}
@@ -137,34 +178,6 @@ const PokemonDetails = () => {
       ) : (
         <Spinner />
       )}
-
-      <Container>
-        <Row>
-          <Col>
-            <Button
-              className="mb-3"
-              variant="danger"
-              onClick={() => history.goBack()}
-            >
-              <TiArrowBackOutline /> Back
-            </Button>{" "}
-          </Col>
-          <Col>
-            {" "}
-            <Link
-              to={{
-                pathname: `/pokedex/pokemon/${id}/encounters`,
-                id: id,
-              }}
-            >
-              <h5>
-                {" "}
-                Encounters <TiArrowForwardOutline />
-              </h5>
-            </Link>
-          </Col>
-        </Row>
-      </Container>
     </div>
   );
 };

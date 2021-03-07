@@ -36,6 +36,20 @@ select {
   border-radius: 5px 5px 5px 5px;
 }
 
+.position-absolute {
+  position: absolute;
+}
+
+.test-name-japan {
+  position: absolute;
+  color: rgb(53, 53, 53, 0.8);
+  font-family: "Source Code Pro", monospace;
+  font-size: 80px;
+  font-weight: 900;
+  opacity: 0.9;
+  z-index: 1;
+}
+
 .font-family {
   font-family: "DotGothic16", sans-serif;
 }
