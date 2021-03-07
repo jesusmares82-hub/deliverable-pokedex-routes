@@ -21,6 +21,8 @@ const PublicPage = ({ children, ...props }) => {
   const [hasData, setHasData] = useState(true);
   const [messageError, setMessageError] = useState("");
 
+  const [types, setTypes] = useState([]);
+
   const { user } = useAuth();
 
   useEffect(() => {
@@ -59,6 +61,16 @@ const PublicPage = ({ children, ...props }) => {
     }
   }, [queryName]);
 
+  useEffect(() => {
+    try {
+      axios.get(" https://pokeapi.co/api/v2/type").then((res) => {
+        setTypes(res.data.results);
+      });
+    } catch (err) {
+      console.log(err.response.data);
+    }
+  }, [pokes]);
+
   const handleSearchName = (value, setSearchTerm) => {
     setQueryName(value);
     setSearchTerm("");
@@ -76,6 +88,7 @@ const PublicPage = ({ children, ...props }) => {
     setPageCount(0);
     setPokes([]);
     setPokemon(null);
+    setTypes([]);
     setMessageError("");
   };
 
@@ -100,6 +113,7 @@ const PublicPage = ({ children, ...props }) => {
         />
         <div>
           <SearchBox
+            types={types}
             handleSearchTermType={handleSearchType}
             handleSearchTermName={handleSearchName}
             handleClearTerm={handleClear}

@@ -1,27 +1,16 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 const SearchBox = ({
+  types,
   handleSearchTermName,
   handleSearchTermType,
   handleClearTerm,
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [types, setTypes] = useState([]);
-
-  useEffect(() => {
-    try {
-      axios.get(" https://pokeapi.co/api/v2/type").then((res) => {
-        setTypes(res.data.results);
-      });
-    } catch (err) {
-      console.log(err.response.data);
-    }
-  }, []);
 
   return (
     <div>
