@@ -19,6 +19,7 @@ const PokemonDetails = () => {
   const [pokemon, setPokemon] = useState(null);
   const [pokemonAbilities, setPokemonAbilities] = useState([]);
   const [pokemonMoves, setPokemonMoves] = useState([]);
+  const [imageShown, setImageShown] = useState(pokemon);
 
   const [hasData, setHasData] = useState(false);
 
@@ -36,6 +37,7 @@ const PokemonDetails = () => {
             setPokemon(res.data);
             setPokemonAbilities(res.data.abilities);
             setPokemonMoves(res.data.moves);
+            setImageShown(res.data.sprites.front_default);
             setHasData(true);
           });
       } catch (error) {
@@ -106,11 +108,7 @@ const PokemonDetails = () => {
                     })}
                 </div>
                 <Col className="col-md-3 mt-5">
-                  <img
-                    width="240px"
-                    src={`https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png`}
-                    alt={pokemon.name}
-                  />
+                  <img width="240px" src={imageShown} alt={pokemon.name} />
                   <h2>
                     {pokemon.name.charAt(0).toUpperCase() +
                       pokemon.name.slice(1)}
